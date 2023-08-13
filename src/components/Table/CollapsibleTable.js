@@ -10,6 +10,7 @@ import Paper from "@mui/material/Paper";
 import IRREGULAR_VERBS from "../../irregularVerbs";
 import Row from "./Row";
 import styled from "@emotion/styled";
+import SearchContext from "../../store/search-context";
 
 const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
   maxHeight: 500,
@@ -38,6 +39,17 @@ const verbFormHeader = ["v1", "v2", "v3"].map((header) => (
 ));
 
 const CollapsibleTable = () => {
+  const searchCtx = React.useContext(SearchContext);
+  const { searchTerm } = searchCtx;
+
+  const verbs = Object.entries(IRREGULAR_VERBS);
+
+  const filteredVerbs = verbs.filter(
+    ([key, value]) =>
+      value.v1.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      value.simplePast.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      value.pastParticiple.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   return (
     <StyledTableContainer component={Paper}>
       <Table aria-label="collapsible table" stickyHeader>
@@ -48,10 +60,10 @@ const CollapsibleTable = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {IRREGULAR_VERBS.map((verb, index) => (
+          {filteredVerbs.map(([key, value], index) => (
             <Row
-              key={verb.v1}
-              verb={verb}
+              key={key}
+              verb={value}
               sx={{
                 bgcolor: index % 2 === 1 ? "secondary.main" : "",
               }}

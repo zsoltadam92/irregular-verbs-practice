@@ -2,15 +2,17 @@ import {
   AppBar,
   Box,
   InputBase,
+  TextField,
   Toolbar,
   alpha,
   createTheme,
 } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import styled from "@emotion/styled";
 import CommonButton from "./../UI/common/CommonButton";
 import useHandleNavigate from "../../hooks/use-navigate";
+import SearchContext from "./../../store/search-context";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -42,7 +44,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   justifyContent: "center",
 }));
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
+const StyledTextField = styled(TextField)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
@@ -63,6 +65,8 @@ console.log(theme);
 
 const SearchBar = () => {
   const { handleNavigate: navigateToHome } = useHandleNavigate();
+  const searchCtx = useContext(SearchContext);
+
   return (
     <Box>
       <AppBar
@@ -85,9 +89,13 @@ const SearchBar = () => {
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
-            <StyledInputBase
+            <StyledTextField
               placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
+              inputProps={{
+                "aria-label": "search",
+              }}
+              value={searchCtx.searchTerm}
+              onChange={searchCtx.searchChange}
             />
           </Search>
           <CommonButton
