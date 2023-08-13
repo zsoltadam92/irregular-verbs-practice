@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import "./App.css";
+
 import RootPage from "./pages/Root";
 import ErrorPage from "./pages/Error";
 import HomePage from "./pages/Home";
@@ -10,7 +10,6 @@ import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import OpenDyslexicRegular from "./fonts/open_dyslexic/OpenDyslexic-Regular.otf";
 import ColorModeContext from "./store/colorMode-context";
 import { useContext } from "react";
-import { deepOrange } from "@mui/material/colors";
 
 function App() {
   const colorModeCtx = useContext(ColorModeContext);
@@ -33,14 +32,18 @@ function App() {
     palette: {
       mode: colorModeCtx.mode,
       primary: {
-        main: "#1769aa",
+        light: "#757ce8",
+        main: "#2180de",
+        dark: "#3e08ea",
+        contrastText: "#fff",
       },
-      ...(colorModeCtx.mode === "light" && {
-        background: {
-          default: "#dedede",
-          paper: "#fff",
-        },
-      }),
+      ...(colorModeCtx.mode === "light"
+        ? {
+            secondary: { main: "#efefef" },
+          }
+        : {
+            secondary: { main: "#333" },
+          }),
     },
     typography: {
       fontFamily: "OpenDyslexic, sans-serif",

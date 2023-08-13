@@ -7,6 +7,8 @@ const HomeLayout = () => {
   const { handleNavigate: navigateToTable } = useHandleNavigate();
   const { handleNavigate: navigateToSettings } = useHandleNavigate();
 
+  const buttonStyles = { height: "4rem", width: "16rem", padding: "0 2rem" };
+
   return (
     <Box
       display="flex"
@@ -17,14 +19,14 @@ const HomeLayout = () => {
       gap="3rem"
     >
       <CommonButton
-        sx={{ height: "4rem", padding: "0 2rem" }}
+        sx={buttonStyles}
         variant="contained"
         onClick={() => navigateToTable("/table")}
       >
         Table
       </CommonButton>
       <CommonButton
-        sx={{ height: "4rem", padding: "0 2rem" }}
+        sx={buttonStyles}
         variant="contained"
         onClick={() => navigateToSettings("/settings")}
       >

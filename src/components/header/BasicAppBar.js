@@ -7,7 +7,14 @@ const BasicAppBar = () => {
     <Box>
       <AppBar position="static" sx={{ pt: 1.5, pb: 2 }}>
         <Toolbar>
-          <Typography variant="h3" sx={{ flexGrow: 1, textAlign: "center" }}>
+          <Typography
+            variant="h3"
+            sx={{
+              flexGrow: 1,
+              textAlign: "center",
+              fontSize: { xs: "2rem", sm: "4rem" },
+            }}
+          >
             Irregular verbs
           </Typography>
           <ColorModeToggle />
