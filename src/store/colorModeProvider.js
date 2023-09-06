@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import ColorModeContext from "./colorMode-context";
 
 const ColorModeProvider = ({ children }) => {

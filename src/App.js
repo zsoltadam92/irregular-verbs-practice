@@ -10,6 +10,7 @@ import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import OpenDyslexicRegular from "./fonts/open_dyslexic/OpenDyslexic-Regular.otf";
 import ColorModeContext from "./store/colorMode-context";
 import { useContext } from "react";
+import CardProvider from "./store/CardProvider";
 
 function App() {
   const colorModeCtx = useContext(ColorModeContext);
@@ -39,6 +40,10 @@ function App() {
       },
       ...(colorModeCtx.mode === "light"
         ? {
+            background: {
+              default: "#fafafa",
+              paper: "#fefefe",
+            },
             secondary: { main: "#efefef" },
           }
         : {
@@ -68,7 +73,9 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <RouterProvider router={router}></RouterProvider>
+        <CardProvider>
+          <RouterProvider router={router}></RouterProvider>
+        </CardProvider>
       </ThemeProvider>
     </>
   );
