@@ -30,7 +30,13 @@ const SolutionContent = () => {
         pastParticiple={currentVerb.pastParticiple}
         verbForm={verbForm}
       />
-      <Button onClick={nextVerb}>
+      <Button
+        variant="contained"
+        onClick={nextVerb}
+        style={{
+          margin: "2rem 0",
+        }}
+      >
         {currentVerbIndex === selectedVerbs.length - 1 ? "Finish" : "Next"}
       </Button>
     </Box>

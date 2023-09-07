@@ -3,7 +3,7 @@
 import { speakHandler } from "../../utils/helper";
 import VolumeButton from "../UI/common/VolumeButton";
 
-const VerbFormContent = ({ label, value, icon, isUsed }) => {
+const VerbFormContent = ({ label, value }) => {
   return (
     <div
       style={{ display: "inline-block", cursor: "pointer" }}

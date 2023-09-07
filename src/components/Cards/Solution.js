@@ -24,7 +24,7 @@ const Solution = (props) => {
             key={verbForm.form}
             label={verbForm.label}
             value={verbForm.value}
-            isUsed={props.verbForm === verbForm.form}
+            // isUsed={props.verbForm === verbForm.form}
           />
         ))}
       </div>

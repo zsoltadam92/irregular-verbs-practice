@@ -2,13 +2,11 @@ import {
   Box,
   Button,
   Card,
-  CardActionArea,
   CardActions,
   CardContent,
-  Collapse,
   LinearProgress,
 } from "@mui/material";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import TaskContent from "./TaskContent";
 import SolutionContent from "./SolutionContent";
 import CardContext from "../../store/card-context";
@@ -28,7 +26,7 @@ const Cards = () => {
           sm: 400,
           lg: 500,
         },
-        margin: "3rem auto ",
+        margin: "1rem auto ",
         boxShadow: 12,
         borderRadius: "1rem",
       }}
@@ -50,11 +48,19 @@ const Cards = () => {
                 variant="determinate"
                 color="success"
                 value={progressValue}
+                style={{ height: "0.5rem" }}
               />
 
               <TaskContent />
             </CardContent>
-            <CardActions>
+            <CardActions
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               {!isChecked ? (
                 <Button
                   variant="contained"

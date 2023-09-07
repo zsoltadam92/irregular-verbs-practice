@@ -9,7 +9,7 @@ const AnswerField = () => {
   return (
     <>
       <TextField
-        style={{ margin: "2rem auto" }}
+        style={{ margin: "2rem auto 1rem" }}
         type="text"
         label={verbForm === "simplePast" ? "v2" : "v3"}
         variant="outlined"
